@@ -16,7 +16,15 @@ function onReady(){
     let checkbox = document.createElement('input');
 
     //create delete button
-    var remove = document.createElement('button')
+    var remove = document.createElement('button');
+    remove.textContent = 'delete';
+    remove.addEventListener('click', (event) => {
+      var confirmation = confirm('Are you sure you want to delete this item?');
+      if(!confirmation){
+        return;
+      }
+      newLi.remove();
+    })
 
     //set the input's type to checkbox
     checkbox.type = "checkbox";
@@ -35,16 +43,7 @@ function onReady(){
 
     //empty the input
     newToDoText.value = '';
-  });
-
-addToDoForm.addEventListener('click', (event) => {
-  event.preventDefault();
-    var confirmation = confirm('Are you sure you want to delete this item?');
-    if(confirmation == true){
-      return delete(newLi);
-    }
-  });
-
+ });
 }
 
 window.onload = function(){
