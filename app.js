@@ -22,11 +22,21 @@ function onReady(){
       var newLi = document.createElement('li');
       var checkbox = document.createElement('input');
       checkbox.type = "checkbox";
+      var remove = document.createElement('button');
+      remove.textContent = 'delete';
+      remove.addEventListener('click', (event) => {
+        let confirmation = confirm('Are you sure you want to delete this item?');
+        if(!confirmation){
+          return;
+        }
+        newLi.remove();
+      });
 
       newLi.innerHTML = toDo.title;
 
       toDoList.appendChild(newLi);
       newLi.appendChild(checkbox);
+      newLi.appendChild(remove);
     });
   }
 
